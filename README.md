@@ -1,54 +1,70 @@
-# React + TypeScript + Vite
+# Beer Collection 🍺
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application for managing a beer collection, developed with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- TypeScript
+- Vite
+- React Router DOM
+- ESLint
+- Vitest (for testing)
 
-## Expanding the ESLint configuration
+## Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js v20.19.1
+- npm v10.8.2 (comes with Node.js)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone [REPOSITORY_URL]
+cd beer-collection
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+```bash
+npm install
 ```
+
+## Available Scripts
+
+- `npm run dev`: Starts the development server
+- `npm run build`: Generates the production build
+- `npm run lint`: Runs ESLint to check the code
+- `npm test`: Runs tests with Vitest
+- `npm run preview`: Preview the production build locally
+
+## Project Structure
+
+```
+beer-collection/
+├── src/
+│   ├── components/     # Reusable components
+│   ├── pages/         # Application pages
+│   ├── routes/        # Route configuration
+│   └── test/          # Test configuration
+├── public/            # Public files
+└── .eslintrc.json    # ESLint configuration
+```
+
+## Routes
+
+- `/`: Home page
+- `/beers`: Beer list
+
+## ESLint Configuration
+
+The project uses a basic ESLint configuration with support for:
+
+- React
+- TypeScript
+- Essential rules for maintaining code quality
+
+## Testing
+
+Tests are written using Vitest and React Testing Library. Each component has its own tests in the same folder as the component.
