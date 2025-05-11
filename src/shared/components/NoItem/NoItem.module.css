@@ -1,0 +1,16 @@
+.noItem {
+  border: 1px solid #fb1;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 1em #ccc;
+  background-color: #fb1;
+}
+
+.text {
+  margin-bottom: 3rem;
+}

@@ -1,0 +1,27 @@
+.filterContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  grid-template-rows: auto;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.sortContainer {
+  margin-bottom: 1rem;
+}
+
+.sortButtons {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 0.5rem;
+}
+
+.sortText {
+  font-family: var(--type-second);
+  display: block;
+  font-size: 1rem;
+  line-height: 1;
+  padding-bottom: 0.5rem;
+}

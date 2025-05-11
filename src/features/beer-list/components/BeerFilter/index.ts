@@ -1,0 +1,1 @@
+export { BeerFilter } from './BeerFilter';

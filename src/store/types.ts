@@ -1,10 +1,3 @@
-import { Beer } from '../api/types/beer';
+import { BeerSlice } from './slices/beerSlice/types';
 
-export interface BeerStore {
-  beers: Beer[];
-  loading: boolean;
-  error: string | null;
-  fetchBeers: () => Promise<void>;
-  addBeer: (beer: Beer) => void;
-  removeBeer: (id: number) => void;
-}
+export type Store = BeerSlice;

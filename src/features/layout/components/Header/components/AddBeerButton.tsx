@@ -11,7 +11,7 @@ export const AddBeerButton: FC<AddBeerButtonProps> = ({
   const buttonClassName = `${styles.plusIcon} ${className || ''}`;
 
   return (
-    <Link to="" className={buttonClassName} title={title}>
+    <Link to="/beers/new" className={buttonClassName} title={title}>
       +
     </Link>
   );

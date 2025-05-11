@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { Feed } from '../features/beer-list/components/Feed';
+
 const Home: React.FC = () => {
   return (
-    <div>
-      <h1>Home</h1>
-      <p>Bem-vindo à nossa coleção de cervejas!</p>
+    <div className="container mainContainer">
+      <Feed />
     </div>
   );
 };

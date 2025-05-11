@@ -3,16 +3,11 @@ import React from 'react';
 import styles from './Button.module.css';
 import type { ButtonProps } from './types';
 
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  variant = 'primary',
-  onClick,
-  disabled = false,
-}) => {
-  const buttonClasses = [styles.button, styles[variant], disabled ? styles.disabled : ''].join(' ');
+export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', ...props }) => {
+  const buttonClasses = [styles.button, styles[variant]].join(' ');
 
   return (
-    <button className={buttonClasses} onClick={onClick} disabled={disabled}>
+    <button className={buttonClasses} {...props}>
       {children}
     </button>
   );
