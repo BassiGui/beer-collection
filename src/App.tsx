@@ -1,12 +1,15 @@
-import React from 'react';
+import { FC } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
+import { Layout } from './features/layout/components/Layout';
 import AppRoutes from './routes';
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <Layout>
+        <AppRoutes />
+      </Layout>
     </BrowserRouter>
   );
 };
