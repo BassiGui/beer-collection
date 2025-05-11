@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
 import { NavigationProps } from '../../types/navigation.types';
+import { Logo } from '../shared/Logo/Logo';
 
 import styles from './Header.module.css';
 import { AddBeerButton } from './components/AddBeerButton';
-import { Logo } from './components/Logo';
 
 export const Header: FC<NavigationProps> = ({ className }) => {
   return (
