@@ -136,6 +136,17 @@ src/
    - Hooks personalizados
    - Funções utilitárias
 
+## 📋 Pré-requisitos
+
+### Versão do Node.js
+
+- Node.js v20.19.1
+- npm 10.8.2
+
+### Variáveis de Ambiente
+
+Renomear o arquivo .env.example para apenas .env
+
 ## 🚀 Instalação e Uso
 
 ```bash
