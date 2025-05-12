@@ -49,7 +49,7 @@ export const BeerForm = ({ initialData, isEditing = false }: BeerFormProps) => {
 
   return (
     <section className={`${styles.createBeer} container mainContainer`}>
-      <form className={styles.forms} onSubmit={onSubmit}>
+      <form className={`${styles.forms} animeLeft`} onSubmit={onSubmit}>
         <h1 className={styles.title}>{isEditing ? 'Editar cerveja' : 'Criar cerveja'}</h1>
 
         <Input

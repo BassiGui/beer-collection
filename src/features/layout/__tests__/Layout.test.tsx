@@ -1,45 +1,31 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
 
-import { Layout } from '../components/Layout';
-
-const renderWithRouter = (component: React.ReactNode) => {
-  return render(<BrowserRouter>{component}</BrowserRouter>);
-};
+import { Layout } from '../components/Layout/Layout';
+import styles from '../components/Layout/Layout.module.css';
 
 describe('Layout', () => {
-  it('deve renderizar o Header', () => {
-    renderWithRouter(
-      <Layout>
-        <div>Conteúdo de teste</div>
-      </Layout>
+  it('deve renderizar a estrutura completa do layout corretamente', () => {
+    render(
+      <MemoryRouter>
+        <Layout>Conteúdo</Layout>
+      </MemoryRouter>
     );
 
+    // Verifica o container principal
+    const layoutContainer = screen.getByTestId('layout-container');
+    expect(layoutContainer).toHaveClass(styles.layout);
+
+    // Verifica o header
     expect(screen.getByRole('banner')).toBeInTheDocument();
-  });
 
-  it('deve renderizar o conteúdo principal', () => {
-    renderWithRouter(
-      <Layout>
-        <div>Conteúdo de teste</div>
-      </Layout>
-    );
+    // Verifica o conteúdo principal
+    const mainContent = screen.getByRole('main');
+    expect(mainContent).toHaveClass('AppBody');
+    expect(mainContent).toHaveTextContent('Conteúdo');
 
-    expect(screen.getByText('Conteúdo de teste')).toBeInTheDocument();
-  });
-
-  it('deve ter a estrutura correta de layout', () => {
-    const { container } = renderWithRouter(
-      <Layout>
-        <div>Conteúdo de teste</div>
-      </Layout>
-    );
-
-    const layoutElement = container.firstChild;
-    expect(layoutElement).toHaveClass('layout');
-
-    const mainElement = screen.getByRole('main');
-    expect(mainElement).toHaveClass('AppBody');
+    // Verifica o footer
+    expect(screen.getByRole('contentinfo')).toBeInTheDocument();
   });
 });

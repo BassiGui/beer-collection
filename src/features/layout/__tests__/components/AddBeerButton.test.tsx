@@ -12,15 +12,15 @@ describe('AddBeerButton', () => {
   it('deve renderizar o botão de adicionar cerveja', () => {
     renderWithRouter(<AddBeerButton />);
 
-    const addButton = screen.getByRole('link', { name: /add a new kind of beer/i });
+    const addButton = screen.getByRole('link', { name: /adicionar cerveja/i });
     expect(addButton).toBeInTheDocument();
-    expect(addButton).toHaveAttribute('href', '/add-new-beer');
+    expect(addButton).toHaveAttribute('href', '/beers/new');
   });
 
   it('deve aceitar e aplicar className personalizada', () => {
     renderWithRouter(<AddBeerButton className="custom-class" />);
 
-    const addButton = screen.getByRole('link', { name: /add a new kind of beer/i });
+    const addButton = screen.getByRole('link', { name: /adicionar cerveja/i });
     expect(addButton).toHaveClass('custom-class');
   });
 

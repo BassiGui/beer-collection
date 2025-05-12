@@ -8,9 +8,11 @@ import styles from './Layout.module.css';
 
 export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
-    <div className={styles.layout}>
+    <div className={styles.layout} data-testid="layout-container">
       <Header />
-      <main className="AppBody">{children}</main>
+      <main className="AppBody" role="main" aria-label="Main content">
+        {children}
+      </main>
       <Footer />
     </div>
   );

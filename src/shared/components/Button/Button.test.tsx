@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 import Button from './Button';
+import styles from './Button.module.css';
 
 describe('Button', () => {
   it('deve renderizar o botão com o texto correto', () => {
@@ -31,9 +32,9 @@ describe('Button', () => {
 
   it('deve aplicar a variante correta', () => {
     const { rerender } = render(<Button variant="primary">Botão</Button>);
-    expect(screen.getByText('Botão')).toHaveClass('primary');
+    expect(screen.getByText('Botão')).toHaveClass(styles.primary);
 
     rerender(<Button variant="secondary">Botão</Button>);
-    expect(screen.getByText('Botão')).toHaveClass('secondary');
+    expect(screen.getByText('Botão')).toHaveClass(styles.secondary);
   });
 });

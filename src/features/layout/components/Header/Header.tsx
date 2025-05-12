@@ -8,8 +8,8 @@ import { AddBeerButton } from './components/AddBeerButton';
 
 export const Header: FC<NavigationProps> = ({ className }) => {
   return (
-    <header className={`${styles.header} ${className || ''}`}>
-      <nav className={`${styles.nav} container`}>
+    <header className={`${styles.header} ${className || ''}`} role="banner" aria-label="Header">
+      <nav className={`${styles.nav} container`} role="navigation" aria-label="Navigation">
         <Logo />
         <AddBeerButton />
       </nav>

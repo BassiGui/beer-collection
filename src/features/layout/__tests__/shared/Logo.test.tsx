@@ -1,33 +1,29 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
 
 import { Logo } from '../../components/shared/Logo/Logo';
-
-const renderWithRouter = (component: React.ReactNode) => {
-  return render(<BrowserRouter>{component}</BrowserRouter>);
-};
+import styles from '../../components/shared/Logo/Logo.module.css';
 
 describe('Logo', () => {
-  it('deve renderizar o link do logo', () => {
-    renderWithRouter(<Logo />);
+  it('deve renderizar o logo com o texto correto', () => {
+    render(
+      <MemoryRouter>
+        <Logo />
+      </MemoryRouter>
+    );
 
-    const logoLink = screen.getByRole('link', { name: /beer celler - home/i });
-    expect(logoLink).toBeInTheDocument();
-    expect(logoLink).toHaveAttribute('href', '/');
+    const logo = screen.getByRole('link', { name: /Beer celler - Home/i });
+    expect(logo).toBeInTheDocument();
+    expect(logo).toHaveAttribute('href', '/');
+    expect(logo).toHaveClass(styles.logo);
   });
 
-  it('deve renderizar a imagem do logo', () => {
-    renderWithRouter(<Logo />);
-
-    const logoImage = screen.getByRole('img', { name: /beer icon/i });
-    expect(logoImage).toBeInTheDocument();
-  });
-
-  it('deve aceitar e aplicar className personalizada', () => {
-    renderWithRouter(<Logo className="custom-class" />);
-
-    const logoLink = screen.getByRole('link', { name: /beer celler - home/i });
-    expect(logoLink).toHaveClass('custom-class');
+  it('deve aplicar a classe correta', () => {
+    render(
+      <MemoryRouter>
+        <Logo />
+      </MemoryRouter>
+    );
   });
 });

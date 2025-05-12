@@ -3,8 +3,15 @@
   flex-direction: column;
   padding: 1rem;
   border-radius: 8px;
-  background-color: #fff;
+  padding: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .image {
@@ -12,23 +19,47 @@
   height: 200px;
   object-fit: cover;
   border-radius: 4px;
+  margin-bottom: 12px;
 }
 
 .info {
-  margin-top: 1rem;
+  margin-bottom: 16px;
 }
 
 .name {
-  margin: 0;
-  font-size: 1.2rem;
+  font-size: 18px;
   font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.additionalInfo {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  opacity: 0;
+}
+
+.additionalInfo.expanded {
+  max-height: 200px;
+  opacity: 1;
+  transition:
+    max-height 0.3s ease-in,
+    opacity 0.3s ease-in;
+}
+
+.additionalInfo p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 14px;
 }
 
 .actions {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 8px;
+  margin-top: auto;
 }
+
 .button {
   padding: 0.5rem 1rem;
   border: none;
@@ -44,7 +75,6 @@
 }
 
 .buttonRemove {
-  composes: button;
   background-color: #dc3545;
 }
 

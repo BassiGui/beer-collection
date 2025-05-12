@@ -6,12 +6,12 @@ import styles from '../Header.module.css';
 
 export const AddBeerButton: FC<AddBeerButtonProps> = ({
   className,
-  title = 'add a new kind of beer',
+  title = 'adicionar cerveja',
 }) => {
   const buttonClassName = `${styles.plusIcon} ${className || ''}`;
 
   return (
-    <Link to="/beers/new" className={buttonClassName} title={title}>
+    <Link to="/beers/new" className={buttonClassName} title={title} role="link" aria-label={title}>
       +
     </Link>
   );

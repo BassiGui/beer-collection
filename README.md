@@ -1,70 +1,170 @@
 # Beer Collection 🍺
 
-A web application for managing a beer collection, developed with React, TypeScript, and Vite.
+Uma aplicação para gerenciar sua coleção de cervejas artesanais, desenvolvida com foco em arquitetura limpa, testabilidade e manutenibilidade.
 
-## Technologies Used
+## 🎯 Prioridades do Projeto
 
-- React
-- TypeScript
-- Vite
-- React Router DOM
-- ESLint
-- Vitest (for testing)
+1. **Arquitetura Limpa e Escalável**
 
-## Prerequisites
+   - Separação clara de responsabilidades
+   - Módulos independentes e coesos
+   - Fácil manutenção e extensão
+   - Baixo acoplamento entre componentes
 
-- Node.js v20.19.1
-- npm v10.8.2 (comes with Node.js)
+2. **Qualidade de Código**
 
-## Installation
+   - Cobertura de testes abrangente
+   - Tipagem forte com TypeScript
+   - Padrões de código consistentes
 
-1. Clone the repository:
+3. **Experiência do Usuário**
+
+   - Interface intuitiva e responsiva
+
+4. **Performance**
+   - Gerenciamento eficiente de estado com Zustand
+
+## 📦 Arquitetura do Projeto
+
+### Visão Geral
+
+O projeto implementa uma arquitetura baseada em features, inspirada em princípios de Domain-Driven Design (DDD) e Clean Architecture. Cada feature é um módulo independente que encapsula sua própria lógica de negócio, componentes e tipos.
+
+### Estrutura de Diretórios
+
+```
+src/
+├── api/                    # Camada de API
+│   ├── config/            # Configurações do Axios
+│   ├── services/          # Serviços de API
+│   ├── types/             # Tipos compartilhados
+│   └── useCases/          # Casos de uso da aplicação
+│
+├── features/              # Módulos de funcionalidades
+│   ├── beer-list/         # Listagem e visualização de cervejas
+│   │   ├── components/    # Componentes específicos
+│   │   ├── hooks/         # Hooks personalizados
+│   │   └── types/         # Tipos específicos
+│   │
+│   ├── beer-management/   # Gerenciamento de cervejas
+│   │   ├── components/    # Componentes de formulário
+│   │   ├── hooks/         # Hooks de gerenciamento
+│   │   └── types/         # Tipos específicos
+│   │
+│   └── layout/           # Componentes de layout
+│       ├── components/    # Componentes de UI
+│       └── hooks/         # Hooks de layout
+│
+├── pages/                # Páginas da aplicação
+├── routes/              # Configuração de rotas
+├── shared/              # Componentes compartilhados
+└── store/               # Gerenciamento de estado global (Zustand)
+    ├── beerStore.ts     # Store para gerenciamento de cervejas
+    └── index.ts         # Exportação das stores
+```
+
+### Decisões Arquiteturais
+
+1. **Separação de Camadas**
+
+   - **API Layer**: Isolamento da lógica de comunicação com backend
+   - **Features**: Módulos independentes com responsabilidades específicas
+   - **Pages**: Composição de features em rotas
+   - **Shared**: Componentes reutilizáveis
+
+2. **Gerenciamento de Estado**
+
+   - Zustand para estado global
+   - Estado local para componentes específicos
+   - Hooks personalizados para lógica reutilizável
+
+3. **Padrões de Projeto**
+   - Componentes funcionais com hooks
+   - Props tipadas com TypeScript
+   - CSS Modules para estilização isolada
+   - Testes unitários abrangentes
+
+### Fluxo de Dados
+
+1. **Requisições à API**
+
+   ```
+   Component -> Hook -> UseCase -> Service -> API
+   ```
+
+2. **Gerenciamento de Estado**
+
+   ```
+   Action -> Store -> Selector -> Component
+   ```
+
+3. **Navegação**
+   ```
+   Route -> Page -> Features -> Components
+   ```
+
+## 🛠️ Tecnologias e Ferramentas
+
+### Frontend
+
+- **React**: Biblioteca principal para construção da UI
+- **TypeScript**: Tipagem estática e melhor DX
+- **Vite**: Build tool rápida e moderna
+- **React Router**: Gerenciamento de rotas
+- **CSS Modules**: Estilização modular e isolada
+- **Zustand**: Gerenciamento de estado global
+
+### Testes
+
+- **Vitest**: Framework de testes rápido
+- **React Testing Library**: Testes de componentes
+- **MSW**: Mock Service Worker para API
+
+### Qualidade
+
+- **ESLint**: Linting de código
+- **Prettier**: Formatação de código
+- **TypeScript**: Verificação de tipos
+- **Husky**: Git hooks para garantir qualidade
+- **lint-staged**: Linting apenas de arquivos alterados
+
+## 🧪 Estratégia de Testes
+
+1. **Testes Unitários**
+
+   - Componentes isolados
+   - Hooks personalizados
+   - Funções utilitárias
+
+## 🚀 Instalação e Uso
 
 ```bash
-git clone [REPOSITORY_URL]
+# Clone o repositório
+git clone https://github.com/seu-usuario/beer-collection.git
+
+# Entre no diretório
 cd beer-collection
-```
 
-2. Install dependencies:
-
-```bash
+# Instale as dependências
 npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
 ```
 
-## Available Scripts
+## 📝 Scripts Disponíveis
 
-- `npm run dev`: Starts the development server
-- `npm run build`: Generates the production build
-- `npm run lint`: Runs ESLint to check the code
-- `npm test`: Runs tests with Vitest
-- `npm run preview`: Preview the production build locally
+- `npm run dev`: Inicia o servidor de desenvolvimento
+- `npm run build`: Cria a build de produção
+- `npm run preview`: Visualiza a build de produção
+- `npm test`: Executa os testes
+- `npm run lint`: Executa o linter
+- `npm run format`: Formata o código
 
-## Project Structure
+## 🤝 Contribuição
 
-```
-beer-collection/
-├── src/
-│   ├── components/     # Reusable components
-│   ├── pages/         # Application pages
-│   ├── routes/        # Route configuration
-│   └── test/          # Test configuration
-├── public/            # Public files
-└── .eslintrc.json    # ESLint configuration
-```
-
-## Routes
-
-- `/`: Home page
-- `/beers`: Beer list
-
-## ESLint Configuration
-
-The project uses a basic ESLint configuration with support for:
-
-- React
-- TypeScript
-- Essential rules for maintaining code quality
-
-## Testing
-
-Tests are written using Vitest and React Testing Library. Each component has its own tests in the same folder as the component.
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
