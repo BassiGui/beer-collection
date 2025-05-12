@@ -20,6 +20,11 @@ class BeerService {
     const response = await api.put<Beer>(`/beers/${id}`, beer);
     return response.data;
   }
+
+  async getBeerById(id: string): Promise<Beer> {
+    const response = await api.get<Beer>(`/beers/${id}`);
+    return response.data;
+  }
 }
 
 export const beerService = new BeerService();

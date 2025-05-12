@@ -1,9 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from '../../../../shared/components/Button';
 import { BeerCardProps } from '../../types';
 
 import styles from './BeerCard.module.css';
 
-export const BeerCard = ({ beer, onRemove, onUpdate }: BeerCardProps) => {
+export const BeerCard = ({ beer, onRemove }: BeerCardProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <img className={styles.image} src={beer.image} alt={beer.name} />
@@ -15,7 +19,7 @@ export const BeerCard = ({ beer, onRemove, onUpdate }: BeerCardProps) => {
         <Button
           variant="primary"
           onClick={() => {
-            onUpdate(beer.id, beer);
+            navigate(`/beers/edit/${beer.id}`);
           }}
         >
           Editar

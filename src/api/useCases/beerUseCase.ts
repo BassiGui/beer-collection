@@ -61,10 +61,24 @@ export const useBeerUseCase = () => {
     }
   };
 
+  const handleGetBeer = async (id: string) => {
+    store.setLoading(true);
+    store.setError(null);
+    try {
+      const beer = await beerService.getBeerById(id);
+      return beer;
+    } catch (error) {
+      store.setError('Erro ao buscar cerveja');
+      store.setLoading(false);
+      console.error('Erro ao buscar cerveja:', error);
+    }
+  };
+
   return {
     fetchBeers,
     handleAddBeer,
     handleRemoveBeer,
     handleUpdateBeer,
+    handleGetBeer,
   };
 };

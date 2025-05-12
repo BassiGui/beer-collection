@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { BeerForm } from '../features/beer-management/components/BeerForm/BeerForm';
+import EditBeer from '../pages/EditBeer';
 import Home from '../pages/Home';
 
 const AppRoutes: React.FC = () => {
@@ -9,6 +10,7 @@ const AppRoutes: React.FC = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/beers/new" element={<BeerForm />} />
+      <Route path="/beers/edit/:id" element={<EditBeer />} />
     </Routes>
   );
 };

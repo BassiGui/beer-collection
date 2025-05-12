@@ -1,23 +1,27 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useBeerUseCase } from '../../../api/useCases/beerUseCase';
-import { useStore } from '../../../store';
-import { BeerFormData } from '../types';
+import { BeerFormData, BeerFormProps } from '../types';
 
-export const useBeerForm = () => {
-  const { handleAddBeer } = useBeerUseCase();
-  const { isLoading, setLoading } = useStore();
+export const useBeerForm = ({ initialData, isEditing = false }: BeerFormProps = {}) => {
+  const { handleAddBeer, handleUpdateBeer } = useBeerUseCase();
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (data: BeerFormData) => {
-    setLoading(true);
     try {
-      await handleAddBeer(data);
+      setIsLoading(true);
+      if (isEditing && initialData) {
+        await handleUpdateBeer(initialData.id, data);
+      } else {
+        await handleAddBeer(data);
+      }
       navigate('/');
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 

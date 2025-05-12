@@ -4,26 +4,26 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../../../../shared/components/Button';
 import { Input } from '../../../../shared/components/Input';
 import { useBeerForm } from '../../hooks/useBeerForm';
+import { BeerFormProps } from '../../types';
 
 import styles from './BeerForm.module.css';
 
-export const BeerForm = () => {
+export const BeerForm = ({ initialData, isEditing = false }: BeerFormProps) => {
   const navigate = useNavigate();
-  const { handleSubmit, isLoading } = useBeerForm();
+  const { handleSubmit, isLoading } = useBeerForm({ initialData, isEditing });
 
   const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    type: '',
-    liters: '',
-    image: '',
-    price: '',
-    rating: '',
+    name: initialData?.name || '',
+    description: initialData?.description || '',
+    type: initialData?.type || '',
+    liters: initialData?.liters ? String(initialData.liters) : '',
+    image: initialData?.image || '',
+    price: initialData?.price ? String(initialData.price) : '',
+    rating: initialData?.rating ? String(initialData.rating) : '',
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -44,14 +44,13 @@ export const BeerForm = () => {
       rating: Number(formData.get('rating')),
     };
 
-    console.log(data);
     handleSubmit(data);
   };
 
   return (
     <section className={`${styles.createBeer} container mainContainer`}>
       <form className={styles.forms} onSubmit={onSubmit}>
-        <h1 className={styles.title}>Create a beer</h1>
+        <h1 className={styles.title}>{isEditing ? 'Editar cerveja' : 'Criar cerveja'}</h1>
 
         <Input
           name="name"
@@ -128,7 +127,7 @@ export const BeerForm = () => {
             Cancelar
           </Button>
           <Button type="submit" variant="primary" disabled={isLoading}>
-            {isLoading ? 'Salvando...' : 'Salvar'}
+            {isLoading ? 'Salvando...' : isEditing ? 'Atualizar' : 'Salvar'}
           </Button>
         </div>
       </form>
