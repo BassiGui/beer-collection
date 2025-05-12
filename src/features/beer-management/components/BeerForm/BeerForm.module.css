@@ -1,0 +1,40 @@
+.createBeer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  gap: 2rem;
+}
+
+.createBeer::before {
+  content: '';
+  display: block;
+  background: url('../../../../assets/beerCreate.jpeg') no-repeat center;
+  background-size: cover;
+}
+
+.forms {
+  max-width: 30rem;
+  padding: 1rem;
+  margin-top: 20vh;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 40rem) {
+  .createBeer {
+    grid-template-columns: 1fr;
+  }
+  .createBeer::before {
+    display: none;
+  }
+  .forms {
+    max-width: 100%;
+  }
+}
